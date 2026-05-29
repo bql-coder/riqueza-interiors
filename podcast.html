@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Excel Podcast | Riq'ueza Design by Heart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/jpeg" href="public/riqueza-logo.jpg" />
+    <link rel="apple-touch-icon" href="public/riqueza-logo.jpg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand-mark" href="index.html"><img src="public/riqueza-logo.jpg" alt="Riq'ueza logo" /><span>Design by Riqueza</span></a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+      <nav class="site-nav" data-nav><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a><a href="academy.html">Academy</a><a href="podcast.html">Podcast</a></nav>
+    </header>
+    <main>
+      <section class="page-hero">
+        <img src="public/album/photo-05.jpg" alt="Podcast studio setup" />
+        <div><p class="eyebrow">The Excel Podcast</p><h1>A refined production room for conversations that deserve clarity.</h1></div>
+      </section>
+      <section class="section podcast-section">
+        <div class="podcast-hero"><div><p class="section-kicker">Podcast studio</p><h2>Record, refine, and package your message professionally.</h2><p>Book the studio for clean audio, video recording, editing, mixing, artwork, intro montage, and monthly production support.</p></div><img src="public/album/photo-08.jpg" alt="Podcast studio interior" loading="lazy" /></div>
+        <div class="pricing-layout"><div class="pricing-copy"><p class="section-kicker">Booking rates</p><h2>Choose the level of production your episode needs.</h2><p>Monthly bundles include four studio sessions. Editing and creative add-ons are selected separately and added to the main booking payment where required.</p></div><div class="rate-list" data-rate-target="podcast"></div></div>
+        <div class="payment-panel">
+          <div class="bank-block"><p class="section-kicker">Booking payment</p><h3>Bank transfer</h3><p class="bank-note">Choose your package, transfer to the account below, and upload the receipt for booking verification.</p><dl><div><dt>Account name</dt><dd>Riqueza Consultar</dd></div><div><dt>Account number</dt><dd>7824178446</dd></div><div><dt>Bank</dt><dd>Wema Bank</dd></div></dl></div>
+          <form class="lux-form payment-form" data-forminit="podcast" enctype="multipart/form-data"><input type="hidden" name="fi-text-formType" value="Podcast Payment Confirmation" /><input type="hidden" name="fi-text-selectedAddons" value="No add-ons selected" /><label>Package<select name="fi-text-package" data-rate-select="podcast" required></select></label><label>Payment option<select name="fi-text-paymentOption" data-option-select="podcast" required></select></label><div class="addon-field full"><span>Optional editing & add-ons</span><div data-addon-target="podcast"></div></div><div class="computed-price"><span>Expected payment</span><strong data-price-output="podcast">Select a package</strong><em data-addon-summary="podcast">No add-ons selected</em></div><label>Full name<input name="fi-sender-fullName" type="text" required /></label><label>Email<input name="fi-sender-email" type="email" required /></label><label>Phone / WhatsApp<input name="fi-text-phone" type="tel" required /></label><label>Payment reference<input name="fi-text-paymentReference" type="text" required /></label><label class="upload-field full"><span>Upload payment receipt</span><input name="fi-file-receipt" type="file" accept=".jpg,.jpeg,.png,.pdf" required /><em>JPG, PNG, or PDF receipt. Max 5MB.</em></label><button class="button button-dark" type="submit">Submit Payment Confirmation</button><p class="form-status" aria-live="polite"></p></form>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="footer-brand"><img src="public/riqueza-logo.jpg" alt="Riq'ueza logo" /><p>Riq'ueza Design by Heart</p><span>Luxury interiors, design education, and refined creative production in Abuja. ZONE 1, DBM PLAZA, Wuse.</span></div><nav><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a><a href="academy.html">Academy</a><a href="podcast.html">Podcast</a></nav><div class="footer-contact"><a href="mailto:designbyriqueza@gmail.com">designbyriqueza@gmail.com</a><a href="https://api.whatsapp.com/send?phone=2348163582619">0816 358 2619</a><a class="staff-link" href="https://formspree.io/login" target="_blank" rel="noreferrer">Staff Access</a></div></footer>
+    <script src="script.js"></script>
+  </body>
+</html>

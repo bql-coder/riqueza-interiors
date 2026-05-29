@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Riqueza Interior Academy | Riq'ueza Design by Heart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/jpeg" href="public/riqueza-logo.jpg" />
+    <link rel="apple-touch-icon" href="public/riqueza-logo.jpg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand-mark" href="index.html"><img src="public/riqueza-logo.jpg" alt="Riq'ueza logo" /><span>Design by Riqueza</span></a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+      <nav class="site-nav" data-nav><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a><a href="academy.html">Academy</a><a href="podcast.html">Podcast</a></nav>
+    </header>
+    <main>
+      <section class="page-hero">
+        <img src="public/academy/academy-group-german-hammer-doors.jpg" alt="Riqueza Interior Academy students" />
+        <div><p class="eyebrow">Riqueza Interior Academy</p><h1>Interior design training grounded in real sites, tools, and execution.</h1></div>
+      </section>
+      <section class="section academy-section">
+        <div class="two-column">
+          <div class="sticky-copy">
+            <p class="section-kicker">Academy</p>
+            <h2>For students who want more than classroom theory.</h2>
+            <p>The Academy introduces emerging designers to the practical side of interiors: measuring, planning, material decisions, site observation, furniture thinking, project flow, and design software foundations.</p>
+            <ul class="quiet-list"><li>Interior Decoration & Design</li><li>Interior Design Project Management</li><li>Furniture Design</li><li>AutoCAD and SketchUp beginner classes</li></ul>
+          </div>
+          <div class="academy-visuals">
+            <img src="public/academy/academy-group-german-hammer-doors.jpg" alt="Academy group on site" loading="lazy" />
+            <div class="image-pair"><img src="public/academy/academy-measuring-practice.jpg" alt="Academy measuring practice" loading="lazy" /><img src="public/academy/academy-space-planning.jpg" alt="Academy space planning" loading="lazy" /></div>
+          </div>
+        </div>
+        <div class="pricing-layout">
+          <div class="pricing-copy"><p class="section-kicker">Course fees</p><h2>Clear pricing for focused interior design training.</h2><p>Registration fee: <strong>NGN 10,000</strong>, non-refundable and paid in addition to the selected course fee. Select a course and payment option before uploading your receipt.</p></div>
+          <div class="rate-list" data-rate-target="academy"></div>
+        </div>
+        <div class="payment-panel">
+          <div class="bank-block"><p class="section-kicker">Bank transfer</p><h3>Payment details</h3><p class="bank-note">Make your transfer, keep the receipt, then complete the confirmation form beside this panel.</p><dl><div><dt>Account name</dt><dd>Riqueza Consultar</dd></div><div><dt>Account number</dt><dd>7824178446</dd></div><div><dt>Bank</dt><dd>Wema Bank</dd></div></dl></div>
+          <form class="lux-form payment-form" data-forminit="academy" action="https://formspree.io/f/xpqnnwgq" method="POST" enctype="multipart/form-data"><input type="hidden" name="fi-text-formType" value="Academy Payment Confirmation" /><label>Course<select name="fi-text-course" data-rate-select="academy" required></select></label><label>Payment option<select name="fi-text-paymentOption" data-option-select="academy" required></select></label><div class="computed-price"><span>Expected payment</span><strong data-price-output="academy">Select a course</strong></div><label>Full name<input name="fi-sender-fullName" type="text" required /></label><label>Email<input name="fi-sender-email" type="email" required /></label><label>Phone / WhatsApp<input name="fi-text-phone" type="tel" required /></label><label>Payment reference<input name="fi-text-paymentReference" type="text" required /></label><label class="upload-field full"><span>Upload payment receipt</span><input name="fi-file-receipt" type="file" accept=".jpg,.jpeg,.png,.pdf" required /><em>JPG, PNG, or PDF receipt. Max 5MB.</em></label><button class="button button-dark" type="submit">Submit Payment Confirmation</button><p class="form-status" aria-live="polite"></p></form>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="footer-brand"><img src="public/riqueza-logo.jpg" alt="Riq'ueza logo" /><p>Riq'ueza Design by Heart</p><span>Luxury interiors, design education, and refined creative production in Abuja. ZONE 1, DBM PLAZA, Wuse.</span></div><nav><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a><a href="academy.html">Academy</a><a href="podcast.html">Podcast</a></nav><div class="footer-contact"><a href="mailto:designbyriqueza@gmail.com">designbyriqueza@gmail.com</a><a href="https://api.whatsapp.com/send?phone=2348163582619">0816 358 2619</a><a class="staff-link" href="https://formspree.io/login" target="_blank" rel="noreferrer">Staff Access</a></div></footer>
+    <script src="script.js"></script>
+  </body>
+</html>

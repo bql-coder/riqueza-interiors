@@ -1592,6 +1592,7 @@ p {
 }
 
 .studio-hero {
+  position: relative;
   display: grid;
   grid-template-columns: 0.82fr 1.18fr;
   gap: clamp(28px, 5vw, 78px);
@@ -1784,11 +1785,46 @@ p {
 
 @media (max-width: 620px) {
   .studio-hero {
-    padding: 96px 14px 18px;
+    min-height: 100svh;
+    align-items: end;
+    padding: 104px 14px 22px;
+    overflow: hidden;
+    background: var(--dark);
+  }
+
+  .studio-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(17, 17, 17, 0.18), rgba(17, 17, 17, 0.74)),
+      linear-gradient(90deg, rgba(17, 17, 17, 0.62), rgba(17, 17, 17, 0.18));
+  }
+
+  .studio-hero-copy {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: #fff;
+  }
+
+  .studio-hero-copy .eyebrow {
+    color: var(--accent);
   }
 
   .studio-hero-copy h1 {
-    font-size: clamp(3rem, 14vw, 4.35rem);
+    color: #fff;
+    font-size: clamp(2.75rem, 12vw, 3.8rem);
+    line-height: 0.92;
+  }
+
+  .studio-hero-copy > p:not(.eyebrow) {
+    max-width: 320px;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.95rem;
   }
 
   .studio-actions,
@@ -1796,14 +1832,44 @@ p {
     width: 100%;
   }
 
+  .studio-actions {
+    order: 2;
+    margin-top: 22px;
+  }
+
+  .studio-hero-copy > p:not(.eyebrow) {
+    order: 3;
+  }
+
+  .studio-actions a {
+    border-color: rgba(255, 255, 255, 0.58);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+  }
+
+  .studio-actions a:first-child {
+    background: #fff;
+    color: var(--dark);
+  }
+
   .studio-hero-images {
-    grid-template-columns: 1fr 1fr;
-    min-height: 360px;
-    gap: 8px;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    min-height: 0;
   }
 
   .studio-hero-images img {
-    border-radius: 18px;
+    position: absolute;
+    inset: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .studio-hero-images img:not(:first-child) {
+    display: none;
   }
 
   .studio-branches {

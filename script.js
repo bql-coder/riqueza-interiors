@@ -133,8 +133,17 @@ const successClose = document.querySelector("[data-success-close]");
 document.querySelectorAll(".site-nav a").forEach((link) => {
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
   const targetPage = link.getAttribute("href");
-  if (targetPage === currentPage) link.classList.add("is-active");
+  if (targetPage === currentPage) {
+    link.classList.add("is-active");
+    link.setAttribute("aria-current", "page");
+  }
 });
+
+function closeNav() {
+  nav.classList.remove("open");
+  header.classList.remove("menu-open");
+  toggle.setAttribute("aria-expanded", "false");
+}
 
 function updateHeader() {
   header.classList.toggle("scrolled", window.scrollY > 24);
@@ -150,11 +159,7 @@ toggle.addEventListener("click", () => {
 });
 
 nav.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    header.classList.remove("menu-open");
-    toggle.setAttribute("aria-expanded", "false");
-  });
+  link.addEventListener("click", closeNav);
 });
 
 socialToggle.addEventListener("click", () => {
@@ -166,6 +171,10 @@ document.addEventListener("click", (event) => {
   if (!social.contains(event.target)) {
     social.classList.remove("open");
     socialToggle.setAttribute("aria-expanded", "false");
+  }
+
+  if (nav.classList.contains("open") && !nav.contains(event.target) && !toggle.contains(event.target)) {
+    closeNav();
   }
 });
 
@@ -184,6 +193,7 @@ document.addEventListener("keydown", (event) => {
     successModal.classList.remove("open");
     social.classList.remove("open");
     socialToggle.setAttribute("aria-expanded", "false");
+    closeNav();
   }
 });
 

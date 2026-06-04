@@ -666,16 +666,21 @@ p {
 }
 
 .portfolio-masonry {
-  display: grid;
-  grid-template-columns: 1.08fr 0.76fr 0.94fr;
-  grid-auto-rows: 285px;
-  gap: clamp(14px, 1.4vw, 22px);
-  margin-top: 46px;
+  column-count: 3;
+  column-gap: clamp(16px, 2vw, 28px);
+  margin-top: 34px;
 }
 
 .portfolio-masonry img {
-  min-height: 0;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 clamp(16px, 2vw, 28px);
+  break-inside: avoid;
+  page-break-inside: avoid;
   background: var(--accent);
+  border-radius: var(--radius-md);
+  box-shadow: 0 24px 70px rgba(31, 45, 53, 0.08);
   transition: transform 500ms ease, filter 500ms ease;
 }
 
@@ -684,43 +689,17 @@ p {
   transform: scale(1.012);
 }
 
-.portfolio-masonry .wide {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-.portfolio-masonry .tall {
-  grid-row: span 2;
-}
-
-.portfolio-expanded {
-  grid-auto-rows: 280px;
-}
-
-.portfolio-expanded img:nth-child(3n + 2),
-.portfolio-expanded img:nth-child(8) {
-  object-position: center;
-}
-
-.portfolio-expanded img:nth-child(5) {
-  grid-row: span 2;
-}
-
-.portfolio-expanded img:nth-child(7) {
-  grid-column: span 2;
-}
-
 .split-panel,
 .payment-panel {
-  margin-top: clamp(50px, 7vw, 88px);
-  padding-top: 34px;
+  margin-top: clamp(36px, 5vw, 64px);
+  padding-top: 24px;
   border-top: 1px solid var(--border);
   align-items: start;
 }
 
 .split-panel .lux-form,
 .payment-form {
-  padding: clamp(22px, 3vw, 34px);
+  padding: clamp(18px, 2.4vw, 26px);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background:
@@ -827,16 +806,306 @@ p {
   aspect-ratio: 4 / 5;
 }
 
+.academy-page {
+  background: var(--paper);
+}
+
+.academy-page .page-hero {
+  position: relative;
+  min-height: 72svh;
+  overflow: hidden;
+}
+
+.academy-page .page-hero > img {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.academy-page .page-hero h1 {
+  font-size: clamp(2.4rem, 4.2vw, 4.4rem);
+  line-height: 1;
+  text-wrap: balance;
+}
+
+@media (min-width: 900px) {
+  .academy-page .page-hero {
+    min-height: 75vh;
+  }
+
+  .academy-page .page-hero > img {
+    object-position: center center;
+  }
+}
+
+@media (max-width: 900px) {
+  .academy-page .page-hero {
+    min-height: 70svh;
+  }
+
+  .academy-page .page-hero > img {
+    object-position: center 20%;
+  }
+}
+
+
+
+
+.academy-section-heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  max-width: 940px;
+  margin: 0 auto 28px;
+}
+
+.academy-section-heading span {
+  color: var(--taupe);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3.8rem);
+  line-height: 0.9;
+}
+
+.academy-section-heading p {
+  margin-bottom: 10px;
+  color: var(--taupe);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.academy-section-heading h2 {
+  max-width: 860px;
+  text-wrap: balance;
+}
+
+.academy-intro {
+  padding-top: clamp(52px, 6vw, 90px);
+  padding-bottom: clamp(24px, 4vw, 40px);
+}
+
+.academy-mission-copy {
+  max-width: 760px;
+  margin: 0 auto;
+  color: rgba(31, 45, 53, 0.74);
+  font-size: 1rem;
+  line-height: 1.85;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.academy-gallery-section {
+  padding-top: 18px;
+}
+
+.academy-gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.94fr);
+  gap: 18px;
+}
+
+.academy-gallery img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(31, 45, 53, 0.08);
+}
+
+.academy-gallery img:first-child {
+  aspect-ratio: 5 / 4;
+}
+
+.academy-courses-section {
+  padding-top: 54px;
+}
+
+.academy-course-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.academy-course-grid .rate-card {
+  display: grid;
+  gap: 0;
+  min-height: 100%;
+  padding: 20px;
+  border-radius: 22px;
+}
+
+.academy-course-grid .rate-card h3 {
+  margin-bottom: 10px;
+  font-size: clamp(1.32rem, 1.6vw, 1.8rem);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.academy-course-grid .rate-card > p {
+  margin-bottom: 12px;
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+.academy-course-grid .rate-option {
+  padding: 12px 0;
+}
+
+.academy-course-grid .rate-option span {
+  font-size: 0.84rem;
+}
+
+.academy-course-grid .rate-option strong {
+  font-size: 1.02rem;
+}
+
+.academy-course-note {
+  max-width: 780px;
+  margin: 18px auto 0;
+  color: rgba(31, 45, 53, 0.72);
+  font-size: 0.94rem;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.academy-payment-section {
+  padding-top: 16px;
+}
+
+.academy-payment-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1.08fr);
+  gap: 18px;
+  align-items: start;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.academy-bank-card {
+  position: sticky;
+  top: 112px;
+  display: grid;
+  gap: 14px;
+  padding: clamp(20px, 2.6vw, 28px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.64), rgba(251, 250, 248, 0.95));
+  box-shadow: 0 28px 70px rgba(31, 45, 53, 0.08);
+}
+
+.academy-bank-card h2 {
+  margin-bottom: 2px;
+}
+
+.academy-bank-card p {
+  color: rgba(31, 45, 53, 0.7);
+  line-height: 1.8;
+}
+
+.academy-bank-details {
+  display: grid;
+  gap: 10px;
+  margin: 6px 0 0;
+}
+
+.academy-bank-details div {
+  display: grid;
+  gap: 6px;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--border);
+}
+
+.academy-bank-details dt {
+  color: var(--taupe);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.academy-bank-details dd {
+  margin: 0;
+  color: var(--dark);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1.15;
+}
+
+.academy-fee-callout {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px 16px;
+  border-radius: 18px;
+  background: rgba(216, 207, 196, 0.22);
+}
+
+.academy-fee-callout strong {
+  color: var(--dark);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.academy-fee-callout span {
+  color: rgba(31, 45, 53, 0.62);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.academy-form {
+  align-content: start;
+}
+
+.academy-form .computed-price strong {
+  font-size: clamp(2.1rem, 3.1vw, 3rem);
+}
+
+.academy-form .button-dark {
+  margin-top: 2px;
+}
+
 .rate-list {
   display: grid;
   gap: 16px;
 }
 
+.podcast-rate-sections {
+  gap: 28px;
+}
+
+.rate-section {
+  display: grid;
+  gap: 18px;
+}
+
+.rate-section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.72fr);
+  gap: 18px;
+  align-items: end;
+}
+
+.rate-section-head h3 {
+  margin-top: 12px;
+  font-size: clamp(2rem, 3vw, 3.2rem);
+}
+
+.rate-section-head p {
+  margin: 0;
+  color: rgba(31, 45, 53, 0.62);
+  line-height: 1.7;
+}
+
+.podcast-rate-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
 .rate-card {
-  padding: 26px;
+  padding: 20px;
   border: 1px solid var(--border);
   background: var(--bg);
-  border-radius: var(--radius-md);
+  border-radius: 22px;
   transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
@@ -847,7 +1116,26 @@ p {
 }
 
 .rate-card h3 {
-  font-size: 2.3rem;
+  font-size: 2rem;
+}
+
+.rate-card--podcast {
+  display: grid;
+  gap: 0;
+  min-height: 100%;
+}
+
+.rate-card--podcast h4 {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 1.8vw, 2rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.rate-card--podcast > p {
+  margin: 0 0 10px;
+  min-height: 48px;
 }
 
 .rate-label {
@@ -933,6 +1221,46 @@ p {
 .bank-block dd {
   margin: 5px 0 0;
   font-weight: 700;
+}
+
+.booking-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(18px, 3vw, 34px);
+  align-items: start;
+}
+
+.booking-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.booking-copy h2 {
+  max-width: 560px;
+}
+
+.booking-steps {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.booking-steps li {
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  color: rgba(31, 45, 53, 0.7);
+  line-height: 1.6;
+}
+
+.podcast-form {
+  align-content: start;
+  scroll-margin-top: 120px;
+}
+
+.podcast-form .computed-price strong {
+  font-size: clamp(2.1rem, 3.1vw, 3rem);
 }
 
 .computed-price {
@@ -1051,15 +1379,346 @@ p {
   background: var(--bg);
 }
 
-.podcast-hero {
+.podcast-hero-stage {
+  min-height: 88svh;
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: clamp(36px, 7vw, 110px);
+  align-items: end;
+  overflow: hidden;
+}
+
+.podcast-hero-stage > img {
+  object-position: center 28%;
+}
+
+.podcast-hero-stage h1 {
+  font-size: clamp(2.4rem, 4.5vw, 4.1rem);
+  max-width: 720px;
+}
+
+.podcast-hero-stage > div > p:last-child {
+  max-width: 540px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.8;
+}
+
+.podcast-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(26px, 5vw, 64px);
+  align-items: center;
+}
+
+.podcast-facility-media {
+  position: relative;
+  display: grid;
+  gap: 18px;
+}
+
+.podcast-facility-media > img {
+  aspect-ratio: 16 / 9;
+  border-radius: 24px;
+  box-shadow: 0 24px 70px rgba(31, 45, 53, 0.08);
+}
+
+.podcast-facility-thumb {
+  width: min(38%, 280px);
+  margin-left: auto;
+  margin-top: -78px;
+  padding: 14px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 22px 54px rgba(31, 45, 53, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.podcast-facility-thumb img {
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(31, 45, 53, 0.08);
+}
+
+.podcast-facility-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.podcast-facility-copy h2 {
+  font-size: clamp(2.6rem, 4.4vw, 5rem);
+}
+
+.podcast-facility-copy > p {
+  max-width: 520px;
+  color: rgba(31, 45, 53, 0.68);
+}
+
+.podcast-facility-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.podcast-facility-notes h3 {
+  font-size: 1.1rem;
+}
+
+.podcast-facility-notes p {
+  color: rgba(31, 45, 53, 0.62);
+  font-size: 0.94rem;
+}
+
+.podcast-rate-section {
+  display: grid;
+  gap: 20px;
+}
+
+.podcast-rate-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.72fr);
+  gap: 18px;
   align-items: end;
 }
 
-.podcast-hero img {
-  min-height: 520px;
+.podcast-rate-header.compact h2 {
+  font-size: clamp(2.2rem, 3.8vw, 4rem);
+}
+
+.podcast-rate-header p {
+  margin: 0;
+  color: rgba(31, 45, 53, 0.62);
+  line-height: 1.7;
+}
+
+.podcast-rate-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.rate-card--podcast {
+  display: grid;
+  gap: 0;
+  min-height: 100%;
+}
+
+.rate-card--podcast h4 {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 1.8vw, 2rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.rate-card--podcast > p {
+  margin: 0 0 10px;
+  min-height: 48px;
+}
+
+.podcast-book-btn,
+.podcast-book-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid var(--dark);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--dark);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.podcast-book-btn:hover,
+.podcast-book-link:hover {
+  transform: translateY(-1px);
+  background: var(--dark);
+  color: #fff;
+}
+
+.rate-card--podcast .podcast-book-btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.podcast-rate-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: clamp(18px, 3vw, 34px);
+  margin-top: 12px;
+}
+
+.podcast-bundle-column {
+  display: grid;
+  gap: 18px;
+}
+
+.podcast-bundle-list {
+  display: grid;
+  gap: 0;
+}
+
+.podcast-rate-row,
+.podcast-edit-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
+
+.podcast-rate-row h3 {
+  font-size: 1.7rem;
+}
+
+.podcast-rate-row p {
+  max-width: 420px;
+  color: rgba(31, 45, 53, 0.64);
+}
+
+.podcast-rate-row-meta,
+.podcast-edit-row-meta {
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+  min-width: 144px;
+}
+
+.podcast-rate-row-meta strong,
+.podcast-edit-row-meta strong {
+  font-family: var(--font-display);
+  color: var(--dark);
+  font-size: 1.65rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.podcast-monthly-price {
+  color: rgba(31, 45, 53, 0.62);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.podcast-edit-panel {
+  display: grid;
+  gap: 0;
+  padding: 28px;
+  border-radius: 24px;
+  background: var(--dark);
+  color: #fff;
+  box-shadow: 0 28px 70px rgba(31, 45, 53, 0.16);
+}
+
+.podcast-edit-panel .podcast-rate-header p {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.podcast-edit-list {
+  display: grid;
+  gap: 0;
+}
+
+.podcast-edit-row {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.podcast-edit-row span {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.podcast-edit-row p {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.podcast-edit-panel .podcast-book-link {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+.podcast-edit-panel .podcast-book-link:hover {
+  background: #fff;
+  color: var(--dark);
+}
+
+.booking-panel {
+  margin-top: clamp(52px, 6vw, 86px);
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(18px, 3vw, 34px);
+}
+
+.booking-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.booking-copy h2 {
+  max-width: 560px;
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+}
+
+.booking-steps {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.booking-steps li {
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  color: rgba(31, 45, 53, 0.7);
+  line-height: 1.6;
+}
+
+.booking-panel .bank-block {
+  position: static;
+  margin-top: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(246, 243, 242, 0.96)),
+    var(--paper);
+  color: var(--dark);
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 68px rgba(31, 45, 53, 0.08);
+}
+
+.booking-panel .bank-block .section-kicker {
+  color: var(--taupe);
+}
+
+.booking-panel .bank-block .bank-note {
+  color: rgba(31, 45, 53, 0.68);
+}
+
+.booking-panel .bank-block dt {
+  color: var(--taupe);
+}
+
+.booking-panel .bank-block dd {
+  color: var(--dark);
+}
+
+.booking-panel .bank-block div {
+  border-top-color: var(--border);
+}
+
+.podcast-form {
+  align-content: start;
+}
+
+.podcast-form .computed-price strong {
+  font-size: clamp(2.1rem, 3.1vw, 3rem);
 }
 
 .contact-section {
@@ -1406,8 +2065,38 @@ p {
   .payment-panel,
   .split-panel,
   .contact-section,
-  .podcast-hero {
+  .podcast-intro,
+  .booking-panel,
+  .podcast-rate-split {
     grid-template-columns: 1fr;
+  }
+
+  .rate-section-head {
+    grid-template-columns: 1fr;
+  }
+
+  .podcast-rate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .podcast-rate-row,
+  .podcast-edit-row {
+    grid-template-columns: 1fr;
+  }
+
+  .podcast-rate-row-meta,
+  .podcast-edit-row-meta {
+    justify-items: start;
+    min-width: 0;
+  }
+
+  .podcast-facility-thumb {
+    width: min(320px, 70%);
+    margin-top: -52px;
+  }
+
+  .podcast-edit-panel {
+    padding: 22px;
   }
 
   .area-grid,
@@ -1416,7 +2105,7 @@ p {
   }
 
   .area-card {
-    min-height: 440px;
+    min-height: 360px;
   }
 
   .services-row div {
@@ -1424,16 +2113,8 @@ p {
   }
 
   .portfolio-masonry {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 340px;
-  }
-
-  .portfolio-masonry .wide,
-  .portfolio-masonry .tall,
-  .portfolio-expanded img:nth-child(5),
-  .portfolio-expanded img:nth-child(7) {
-    grid-column: auto;
-    grid-row: auto;
+    column-count: 2;
+    column-gap: 18px;
   }
 
   .sticky-copy {
@@ -1474,16 +2155,16 @@ p {
   }
 
   h1 {
-    font-size: clamp(3.2rem, 16vw, 4.35rem);
+    font-size: clamp(2.8rem, 14vw, 3.8rem);
     line-height: 0.9;
   }
 
   h2 {
-    font-size: clamp(2.7rem, 13vw, 4rem);
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
   }
 
   h3 {
-    font-size: clamp(1.9rem, 9vw, 2.7rem);
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
   }
 
   .hero-actions,
@@ -1492,11 +2173,44 @@ p {
   }
 
   .section {
-    padding: 72px 20px;
+    padding: 48px 20px;
+  }
+
+  .podcast-rate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .podcast-facility-thumb {
+    width: 100%;
+    margin-top: -28px;
+    padding: 12px;
+  }
+
+  .podcast-facility-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .podcast-facility-media > img {
+    aspect-ratio: 4 / 5;
+  }
+
+  .podcast-facility-thumb img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .podcast-rate-row,
+  .podcast-edit-row {
+    padding: 16px 0;
+  }
+
+  .podcast-book-btn,
+  .podcast-book-link {
+    width: 100%;
   }
 
   .portfolio-masonry {
-    grid-auto-rows: minmax(310px, 62vh);
+    column-count: 1;
+    column-gap: 0;
   }
 
   .story-images,
@@ -1508,9 +2222,14 @@ p {
   .story-images img,
   .image-pair img,
   .academy-visuals > img,
-  .podcast-hero img {
-    aspect-ratio: 4 / 5;
+  .podcast-facility-media > img {
+    aspect-ratio: 16 / 9;
     min-height: 0;
+  }
+
+  .booking-copy,
+  .podcast-form {
+    gap: 16px;
   }
 
   .lux-form {
@@ -1627,7 +2346,7 @@ p {
 
 .clean-header .site-nav {
   justify-content: center;
-  gap: clamp(30px, 5vw, 74px);
+  gap: clamp(18px, 4vw, 44px);
   font-family: var(--font-display);
   font-size: 0.92rem;
   font-weight: 500;
@@ -1779,8 +2498,8 @@ p {
 }
 
 .section {
-  padding-top: clamp(46px, 6vw, 86px);
-  padding-bottom: clamp(46px, 6vw, 86px);
+  padding-top: clamp(34px, 4.8vw, 62px);
+  padding-bottom: clamp(34px, 4.8vw, 62px);
 }
 
 .page-intro h2,
@@ -1789,17 +2508,17 @@ p {
 .split-panel h2,
 .contact-section h2,
 .podcast-hero h2 {
-  font-size: clamp(2.6rem, 4.8vw, 5.4rem);
+  font-size: clamp(2.2rem, 4.2vw, 4.6rem);
 }
 
 .services-row h3 {
-  font-size: clamp(2rem, 2.6vw, 2.7rem);
+  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
 }
 
 .site-footer.compact-footer,
 .site-footer {
-  padding-top: 44px;
-  padding-bottom: 44px;
+  padding-top: 36px;
+  padding-bottom: 36px;
 }
 
 @media (max-width: 900px) {
@@ -1830,6 +2549,28 @@ p {
 
   .header-cta {
     display: none;
+  }
+
+  .academy-hero {
+    min-height: 74svh;
+  }
+
+  .academy-hero-image {
+    min-height: 74svh;
+    object-position: center 18%;
+  }
+
+  .academy-gallery,
+  .academy-payment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .academy-course-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .academy-bank-card {
+    position: static;
   }
 }
 
@@ -1867,5 +2608,63 @@ p {
   .section {
     padding-top: 42px;
     padding-bottom: 42px;
+  }
+
+  .academy-hero {
+    min-height: 74svh;
+  }
+
+  .academy-hero-image {
+    min-height: 74svh;
+    object-position: center 15%;
+  }
+
+  .academy-hero-copy {
+    gap: 12px;
+    padding: 22px 18px 24px;
+  }
+
+  .academy-hero-copy h1 {
+    font-size: clamp(2.6rem, 12.5vw, 3.8rem);
+  }
+
+  .academy-hero-copy p:last-child {
+    font-size: 0.98rem;
+  }
+
+  .academy-section-heading {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .academy-mission-copy {
+    text-align: left;
+  }
+
+  .academy-gallery {
+    gap: 14px;
+  }
+
+  .academy-gallery img,
+  .academy-gallery img:first-child {
+    aspect-ratio: 4 / 5;
+  }
+
+  .academy-course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .academy-course-grid .rate-card {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .academy-bank-card {
+    border-radius: 22px;
+  }
+
+  .academy-fee-callout {
+    padding: 14px;
+    border-radius: 18px;
   }
 }

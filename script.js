@@ -6,6 +6,7 @@ const FORM_ENDPOINTS = {
 
 const MAX_RECEIPT_SIZE = 5 * 1024 * 1024;
 const ALLOWED_RECEIPT_TYPES = ["image/jpeg", "image/png", "application/pdf"];
+const ACADEMY_REGISTRATION_FEE = 10000;
 
 const socialMarkup = `
   <div class="floating-social" data-social>
@@ -40,47 +41,38 @@ const rates = {
   academy: [
     {
       name: "Interior Decoration & Design",
-      description: "Full interior decoration and design training.",
+      description: "Practical training in interior decoration, space planning, materials, and site execution.",
       options: [
-        ["Full one-time payment", "NGN 315,000"],
-        ["1st installment", "NGN 210,000"],
-        ["2nd installment", "NGN 105,000"],
+        ["Full one-time payment", "₦315,000"],
+        ["1st installment", "₦210,000"],
+        ["2nd installment", "₦105,000"],
       ],
     },
     {
       name: "Interior Design Project Management",
-      description: "Project workflow, coordination, and delivery guidance.",
+      description: "Project workflow, coordination, client handling, and delivery systems.",
       options: [
-        ["Full one-time payment", "NGN 305,000"],
-        ["1st installment", "NGN 215,000"],
-        ["2nd installment", "NGN 100,000"],
+        ["Full one-time payment", "₦305,000"],
+        ["1st installment", "₦215,000"],
+        ["2nd installment", "₦100,000"],
       ],
     },
     {
       name: "Furniture Design",
-      description: "Furniture design foundations for interior environments.",
+      description: "Furniture concepts, detailing, and practical production thinking.",
       options: [
-        ["Full one-time payment", "NGN 255,000"],
-        ["1st installment", "NGN 180,000"],
-        ["2nd installment", "NGN 85,000"],
+        ["Full one-time payment", "₦255,000"],
+        ["1st installment", "₦180,000"],
+        ["2nd installment", "₦85,000"],
       ],
     },
     {
-      name: "AutoCAD Beginner Class",
-      description: "Beginner AutoCAD training for design documentation.",
+      name: "AutoCAD & SketchUp (Beginner Class)",
+      description: "Design documentation and 3D visualization foundations for beginners.",
       options: [
-        ["Full one-time payment", "NGN 205,000"],
-        ["1st installment", "NGN 150,000"],
-        ["2nd installment", "NGN 65,000"],
-      ],
-    },
-    {
-      name: "SketchUp Beginner Class",
-      description: "Beginner SketchUp training for interior visualization.",
-      options: [
-        ["Full one-time payment", "NGN 205,000"],
-        ["1st installment", "NGN 150,000"],
-        ["2nd installment", "NGN 65,000"],
+        ["Full one-time payment", "₦205,000"],
+        ["1st installment", "₦150,000"],
+        ["2nd installment", "₦65,000"],
       ],
     },
   ],
@@ -88,38 +80,138 @@ const rates = {
     {
       name: "Podcast Studio Rental",
       description: "Studio rental only.",
-      options: [["Per hour", "NGN 35,000"], ["Monthly bundle", "NGN 130,000"]],
+      options: [["Per hour", "₦35,000"], ["Monthly bundle", "₦130,000"]],
     },
     {
       name: "Studio Rental for 3 Episodes",
       description: "Record three episodes back-to-back.",
-      options: [["3 hours", "NGN 100,000"], ["Monthly bundle", "NGN 390,000"]],
+      options: [["3 hours", "₦100,000"], ["Monthly bundle", "₦390,000"]],
     },
     {
       name: "Audio & Video Recording",
       description: "Single-camera recording package.",
-      options: [["Per hour", "NGN 60,000"], ["Monthly bundle", "NGN 230,000"]],
+      options: [["Per hour", "₦60,000"], ["Monthly bundle", "₦230,000"]],
     },
     {
       name: "Multi-Cam Recording + Editing",
       description: "Multi-camera recording with post-production.",
-      options: [["Per hour", "NGN 130,000"], ["Monthly bundle", "NGN 500,000"]],
+      options: [["Per hour", "₦130,000"], ["Monthly bundle", "₦500,000"]],
     },
     {
       name: "Premium Multi-Cam Production",
       description: "Recording, editing, intro, design, and montage.",
-      options: [["Per hour", "NGN 270,000"], ["Monthly bundle", "NGN 1,060,000"]],
+      options: [["Per hour", "₦270,000"], ["Monthly bundle", "₦1,060,000"]],
     },
   ],
 };
 
 const podcastAddons = [
-  ["Audio edit per 10 minutes", "NGN 10,000"],
-  ["Single-cam video edit per 10 minutes", "NGN 12,500"],
-  ["Multi-cam video edit per 10 minutes", "NGN 15,000"],
-  ["Artwork design", "NGN 40,000"],
-  ["Video intro montage", "NGN 60,000"],
+  ["Audio edit per 10 minutes", "\u20A610,000"],
+  ["Single-cam video edit per 10 minutes", "\u20A612,500"],
+  ["Multi-cam video edit per 10 minutes", "\u20A615,000"],
+  ["Artwork design", "\u20A640,000"],
+  ["Video intro montage", "\u20A660,000"],
 ];
+
+const podcastRateSections = [
+  {
+    title: "Recording Only",
+    description: "Clean studio sessions without post-production.",
+    items: [
+      {
+        name: "Podcast Studio Rental",
+        description: "Studio rental only for focused recording sessions.",
+        options: [["Per hour", "\u20A635,000"], ["Monthly bundle", "\u20A6130,000"]],
+      },
+      {
+        name: "Studio Rental for 3 Episodes",
+        description: "Record three episodes back-to-back in one booking.",
+        options: [["3 hours", "\u20A6100,000"], ["Monthly bundle", "\u20A6390,000"]],
+      },
+      {
+        name: "Audio & Video Recording",
+        description: "Single-camera recording package.",
+        options: [["Per hour", "\u20A660,000"], ["Monthly bundle", "\u20A6230,000"]],
+      },
+      {
+        name: "Multi-Cam Recording",
+        description: "Multi-camera recording with a more editorial setup.",
+        options: [["Per hour", "\u20A690,000"], ["Monthly bundle", "\u20A6350,000"]],
+      },
+    ],
+  },
+  {
+    title: "Recording + Editing",
+    description: "Packages with recording and editing bundled together.",
+    items: [
+      {
+        name: "Recording + Editing (Single Cam)",
+        description: "Recording and editing for a streamlined production flow.",
+        options: [["Per hour", "\u20A690,000"], ["Monthly bundle", "\u20A6350,000"]],
+      },
+      {
+        name: "Recording + Editing (Multi-Cam)",
+        description: "Multi-camera recording with editing included.",
+        options: [["Per hour", "\u20A6130,000"], ["Monthly bundle", "\u20A6500,000"]],
+      },
+      {
+        name: "Premium Multi-Cam Production",
+        description: "Recording, editing, intro, design, and montage.",
+        options: [["Per hour", "\u20A6270,000"], ["Monthly bundle", "\u20A61,060,000"]],
+      },
+      {
+        name: "3-Episode Multi-Cam Editing",
+        description: "Multi-cam editing for three back-to-back episodes.",
+        options: [["3 hours", "\u20A6385,000"], ["Monthly bundle", "\u20A61,520,000"]],
+      },
+      {
+        name: "3-Episode Premium Production",
+        description: "Three back-to-back episodes with full production.",
+        options: [["3 hours", "\u20A6805,000"], ["Monthly bundle", "\u20A63,200,000"]],
+      },
+    ],
+  },
+  {
+    title: "Editing Only",
+    description: "Standalone editing, design, and intro services.",
+    items: [
+      {
+        name: "Audio Editing",
+        description: "Podcast audio edit.",
+        options: [["Per 10 minutes", "\u20A610,000"]],
+      },
+      {
+        name: "Video Editing (Single Cam)",
+        description: "Podcast video edit for single-camera footage.",
+        options: [["Per 10 minutes", "\u20A612,500"]],
+      },
+      {
+        name: "Video Editing (Multi-Cam)",
+        description: "Podcast video edit for multi-camera footage.",
+        options: [["Per 10 minutes", "\u20A615,000"]],
+      },
+      {
+        name: "Intro / Outro Audio Edit",
+        description: "Podcast intro and outro audio edit.",
+        options: [["Flat rate", "\u20A640,000"]],
+      },
+      {
+        name: "Artwork Design",
+        description: "Podcast artwork design.",
+        options: [["Flat rate", "\u20A640,000"]],
+      },
+      {
+        name: "Video Intro Montage",
+        description: "Video intro montage for podcast episodes.",
+        options: [["Flat rate", "\u20A660,000"]],
+      },
+    ],
+  },
+];
+
+const podcastRateCards = podcastRateSections.flatMap((section) =>
+  section.items.map((item) => ({ ...item, group: section.title })),
+);
 
 const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
@@ -201,6 +293,119 @@ function renderRates(type) {
   const target = document.querySelector(`[data-rate-target="${type}"]`);
   if (!target) return;
 
+  if (type === "podcast") {
+    const recording = podcastRateSections[0];
+    const bundles = podcastRateSections[1];
+    const editing = podcastRateSections[2];
+
+    const renderPriceStack = (options) =>
+      options
+        .map(
+          ([label, price]) => `
+            <div class="rate-option">
+              <span>${label}</span>
+              <strong>${price}</strong>
+            </div>
+          `,
+        )
+        .join("");
+
+    const renderPackageCard = (item, buttonLabel, defaultOptionIndex = 0) => `
+      <article class="rate-card rate-card--podcast">
+        <h4>${item.name}</h4>
+        <p>${item.description}</p>
+        ${renderPriceStack(item.options)}
+        <button
+          type="button"
+          class="podcast-book-btn"
+          data-podcast-package="${item.name}"
+          data-podcast-option-index="${defaultOptionIndex}"
+        >
+          ${buttonLabel}
+        </button>
+      </article>
+    `;
+
+    target.innerHTML = `
+      <section class="podcast-rate-section">
+        <div class="podcast-rate-header">
+          <div>
+            <p class="section-kicker">01 / Recording</p>
+            <h2>Studio Access</h2>
+          </div>
+          <p>Professional capture for ready-to-publish voices.</p>
+        </div>
+        <div class="podcast-rate-grid">
+          ${recording.items.map((item) => renderPackageCard(item, "Select", 0)).join("")}
+        </div>
+      </section>
+      <section class="podcast-rate-split">
+        <div class="podcast-bundle-column">
+          <div class="podcast-rate-header compact">
+            <div>
+              <p class="section-kicker">02 / Premium bundles</p>
+              <h2>Recording + Editing</h2>
+            </div>
+            <p>Bundled sessions for polished production and post-production.</p>
+          </div>
+          <div class="podcast-bundle-list">
+            ${bundles.items
+              .map(
+                (item) => `
+                  <article class="podcast-rate-row">
+                    <div>
+                      <h3>${item.name}</h3>
+                      <p>${item.description}</p>
+                    </div>
+                    <div class="podcast-rate-row-meta">
+                      <strong>${item.options[0]?.[1] || ""}</strong>
+                      <span class="podcast-monthly-price">${item.options[1]?.[1] || ""}</span>
+                      <button
+                        type="button"
+                        class="podcast-book-link"
+                        data-podcast-package="${item.name}"
+                        data-podcast-option-index="${item.options.length > 1 ? 1 : 0}"
+                      >
+                        Book Bundle
+                      </button>
+                    </div>
+                  </article>
+                `,
+              )
+              .join("")}
+          </div>
+        </div>
+        <article class="podcast-edit-panel">
+          <div class="podcast-rate-header compact">
+            <div>
+              <p class="section-kicker">03 / Add-ons</p>
+              <h2>Add-ons</h2>
+            </div>
+          </div>
+          <div class="podcast-edit-list">
+            ${editing.items
+              .map(
+                (item) => `
+                  <div class="podcast-edit-row">
+                    <div>
+                      <span>${item.name}</span>
+                      <p>${item.description}</p>
+                    </div>
+                    <div class="podcast-edit-row-meta">
+                      <strong>${item.options[0]?.[1] || ""}</strong>
+                    </div>
+                  </div>
+                `,
+              )
+              .join("")}
+          </div>
+        </article>
+      </section>
+    `;
+    bindPodcastBookingButtons(target);
+    return;
+  }
+
   target.innerHTML = rates[type]
     .map(
       (item) => `
@@ -221,29 +426,44 @@ function renderRates(type) {
       `,
     )
     .join("");
+}
 
-  if (type === "podcast") {
-    target.insertAdjacentHTML(
-      "beforeend",
-      `
-        <article class="rate-card addon-rate-card">
-          <span class="rate-label">Optional extras</span>
-          <h3>Editing & add-ons</h3>
-          <p>Select these only when they apply to your main studio or recording booking.</p>
-          ${podcastAddons
-            .map(
-              ([label, price]) => `
-                <div class="rate-option">
-                  <span>${label}</span>
-                  <strong>${price}</strong>
-                </div>
-              `,
-            )
-            .join("")}
-        </article>
-      `,
-    );
+function bindPodcastBookingButtons(root) {
+  if (!root || root.dataset.podcastButtonsBound === "true") return;
+  root.dataset.podcastButtonsBound = "true";
+
+  root.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-podcast-package]");
+    if (!button) return;
+    const packageName = button.dataset.podcastPackage;
+    const optionIndex = Number(button.dataset.podcastOptionIndex || "0");
+    focusPodcastPackage(packageName, optionIndex);
+  });
+}
+
+function focusPodcastPackage(packageName, optionIndex = 0) {
+  const packageSelect = document.querySelector('[data-rate-select="podcast"]');
+  const optionSelect = document.querySelector('[data-option-select="podcast"]');
+  const form = document.querySelector('form[data-forminit="podcast"]');
+  if (!packageSelect || !form) return;
+
+  const packageIndex = [...packageSelect.options].findIndex((option) => option.textContent === packageName);
+  if (packageIndex < 0) return;
+
+  packageSelect.value = String(packageIndex);
+  packageSelect.dispatchEvent(new Event("change", { bubbles: true }));
+
+  if (optionSelect) {
+    const safeIndex = Math.max(0, Math.min(optionIndex, optionSelect.options.length - 1));
+    optionSelect.value = String(safeIndex);
+    optionSelect.dispatchEvent(new Event("change", { bubbles: true }));
   }
+
+  form.scrollIntoView({ behavior: "smooth", block: "start" });
+  window.setTimeout(() => {
+    const firstField = form.querySelector("input, select, textarea, button");
+    firstField?.focus?.();
+  }, 450);
 }
 
 function moneyToNumber(price) {
@@ -251,7 +471,7 @@ function moneyToNumber(price) {
 }
 
 function formatNaira(value) {
-  return `NGN ${value.toLocaleString("en-NG")}`;
+  return "\u20A6" + value.toLocaleString("en-NG");
 }
 
 function renderPodcastAddons() {
@@ -281,24 +501,28 @@ function setupRateSelector(type) {
   const packageSelect = document.querySelector(`[data-rate-select="${type}"]`);
   const optionSelect = document.querySelector(`[data-option-select="${type}"]`);
   const output = document.querySelector(`[data-price-output="${type}"]`);
-  if (!packageSelect || !optionSelect || !output) return;
+  if (!packageSelect || !output) return;
+  const usesOptionSelect = Boolean(optionSelect);
+  const availableRates = type === "podcast" ? podcastRateCards : rates[type];
 
-  packageSelect.innerHTML = rates[type]
+  packageSelect.innerHTML = availableRates
     .map((item, index) => `<option value="${index}">${item.name}</option>`)
     .join("");
 
   function renderOptions() {
-    const selected = rates[type][Number(packageSelect.value)];
-    optionSelect.innerHTML = selected.options
-      .map(([label, price], index) => `<option value="${index}" data-price="${price}">${label}</option>`)
-      .join("");
+    const selected = availableRates[Number(packageSelect.value)];
+    if (usesOptionSelect) {
+      optionSelect.innerHTML = selected.options
+        .map(([label, price], index) => `<option value="${index}" data-price="${price}">${label}</option>`)
+        .join("");
+    }
     updatePrice();
   }
 
   function updatePrice() {
     const form = packageSelect.closest("form");
-    const selected = rates[type][Number(packageSelect.value)];
-    const option = selected.options[Number(optionSelect.value)];
+    const selected = availableRates[Number(packageSelect.value)];
+    const option = usesOptionSelect ? selected.options[Number(optionSelect.value)] : selected.options[0];
     const selectedAddons =
       type === "podcast"
         ? [...document.querySelectorAll('[data-addon-target="podcast"] input:checked')].map((input) => {
@@ -308,7 +532,8 @@ function setupRateSelector(type) {
         : [];
     const baseAmount = option ? moneyToNumber(option[1]) : 0;
     const addonAmount = selectedAddons.reduce((sum, addon) => sum + moneyToNumber(addon.price), 0);
-    output.textContent = option ? formatNaira(baseAmount + addonAmount) : "Select an option";
+    const registrationAmount = type === "academy" ? ACADEMY_REGISTRATION_FEE : 0;
+    output.textContent = option ? formatNaira(baseAmount + addonAmount + registrationAmount) : "Select an option";
 
     const addonSummary = document.querySelector(`[data-addon-summary="${type}"]`);
     const selectedAddonText = selectedAddons.length
@@ -331,18 +556,39 @@ function setupRateSelector(type) {
         expected.name = "fi-text-expectedPayment";
         form.appendChild(expected);
       }
+      let paymentOptionField = form.querySelector('input[name="fi-text-paymentOption"]');
+      if (type === "academy" && !paymentOptionField) {
+        paymentOptionField = document.createElement("input");
+        paymentOptionField.type = "hidden";
+        paymentOptionField.name = "fi-text-paymentOption";
+        form.appendChild(paymentOptionField);
+      }
+      if (type === "academy" && paymentOptionField) {
+        paymentOptionField.value = "Full one-time payment (upon registration)";
+      }
       expected.value = option
         ? `${selected.name} - ${option[0]} - base ${option[1]}${
+            type === "academy" ? `; registration fee ${formatNaira(ACADEMY_REGISTRATION_FEE)}` : ""
+          }${
             selectedAddons.length
-              ? `; add-ons: ${selectedAddons.map((addon) => `${addon.label} ${addon.price}`).join(", ")}; total ${formatNaira(baseAmount + addonAmount)}`
-              : `; total ${option[1]}`
-          }`
+              ? `; add-ons: ${selectedAddons.map((addon) => `${addon.label} ${addon.price}`).join(", ")}`
+              : ""
+          }; total ${formatNaira(baseAmount + addonAmount + registrationAmount)}`
         : "";
+    }
+
+    if (type === "academy") {
+      const feeTag = form?.querySelector("[data-registration-fee]");
+      if (feeTag) {
+        feeTag.textContent = `Registration fee: ${formatNaira(ACADEMY_REGISTRATION_FEE)} (non-refundable)`;
+      }
     }
   }
 
   packageSelect.addEventListener("change", renderOptions);
-  optionSelect.addEventListener("change", updatePrice);
+  if (usesOptionSelect) {
+    optionSelect.addEventListener("change", updatePrice);
+  }
   renderOptions();
 }
 

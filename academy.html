@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Riqueza Design | Interior Design, Design Education &amp; Conversations</title>
-    <meta name="description" content="Riqueza Design offers bespoke interior design services across Nigeria, design education through Xcel Academy, and industry conversations via the Pod by Riqueza podcast." />
-    <link rel="canonical" href="https://riquezadesign.com/" />
-    <meta property="og:title" content="Riqueza Design" />
-    <meta property="og:description" content="Interior design, design education, and podcast conversations from Riqueza Design, based in Nigeria." />
-    <meta property="og:image" content="https://riquezadesign.com/public/riqueza-logo.jpg" />
-    <meta property="og:url" content="https://riquezadesign.com/" />
+    <title>Xcel by Riqueza | Interior Design Academy, Abuja</title>
+    <meta name="description" content="Xcel by Riqueza — an interior design academy in Abuja, Nigeria. Learn the craft through observation, structure, and real-world projects under Africa's leading design experts." />
+    <link rel="canonical" href="https://riquezadesign.com/academy.html" />
+    <meta property="og:title" content="Xcel by Riqueza — Interior Design Academy" />
+    <meta property="og:description" content="Learn interior design in Abuja, Nigeria. Xcel Academy trains designers through observation, structure, and real-world work." />
+    <meta property="og:image" content="https://riquezadesign.com/public/academy/academy-group-german-hammer-doors.jpg" />
+    <meta property="og:url" content="https://riquezadesign.com/academy.html" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="facebook-domain-verification" content="z1byygebrz7fq6m7b38d6w51ee8ee5" />
@@ -63,6 +63,7 @@
     <link rel="icon" type="image/jpeg" href="public/riqueza-logo.jpg" />
     <link rel="apple-touch-icon" href="public/riqueza-logo.jpg" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -97,14 +98,14 @@
       </section>
 
       <section class="section academy-intro">
-        <div class="academy-section-heading">
+        <div class="academy-section-heading reveal">
           <span>01</span>
           <div>
             <p>Our Mission</p>
             <h2>We train designers through observation, structure, and real-world work.</h2>
           </div>
         </div>
-        <p class="academy-mission-copy">
+        <p class="academy-mission-copy reveal">
           The Academy is built for people who want interior design education that feels practical, editorial,
           and grounded in how projects are actually delivered.
         </p>
@@ -127,7 +128,7 @@
         </div>
       </section>
 
-      <section class="section academy-courses-section">
+      <section class="section academy-courses-section reveal">
         <div class="academy-section-heading">
           <span>02</span>
           <div>
@@ -141,7 +142,7 @@
         </p>
       </section>
 
-      <section class="section academy-payment-section">
+      <section class="section academy-payment-section reveal">
         <div class="academy-payment-grid">
           <aside class="academy-bank-card">
             <p class="eyebrow">Bank Transfer</p>
@@ -175,17 +176,24 @@
           <form
             class="lux-form payment-form academy-form"
             data-forminit="academy"
-            action="https://formspree.io/f/xpqnnwgq"
+            action="https://formsubmit.co/umohubong21@gmail.com"
             method="POST"
             enctype="multipart/form-data"
           >
+            <input type="hidden" name="_subject" value="Academy Payment Confirmation - Riqueza Design" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_honey" value="" style="display:none" />
             <input type="hidden" name="fi-text-formType" value="Academy Payment Confirmation" />
             <input type="hidden" name="fi-text-registrationFee" value="&#8358;10,000" />
-            <input type="hidden" name="fi-text-paymentOption" value="Full one-time payment (upon registration)" />
 
             <label>
               Course
               <select name="fi-text-course" data-rate-select="academy" required></select>
+            </label>
+
+            <label>
+              Payment option
+              <select name="fi-text-paymentOption" data-option-select="academy" required></select>
             </label>
 
             <div class="computed-price academy-computed-price">
@@ -208,10 +216,6 @@
               <input name="fi-text-phone" type="tel" required />
             </label>
 
-            <label>
-              Payment reference
-              <input name="fi-text-paymentReference" type="text" required />
-            </label>
 
             <label class="upload-field full">
               <span>Upload payment receipt</span>

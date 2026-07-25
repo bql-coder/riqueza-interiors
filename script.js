@@ -1,28 +1,26 @@
-const FORM_ENDPOINTS = {
-  interior: "",
-  academy: "https://formspree.io/f/xpqnnwgq",
-  podcast: "",
-};
-
 const MAX_RECEIPT_SIZE = 5 * 1024 * 1024;
 const ALLOWED_RECEIPT_TYPES = ["image/jpeg", "image/png", "application/pdf"];
 const ACADEMY_REGISTRATION_FEE = 10000;
 
 const socialMarkup = `
   <div class="floating-social" data-social>
-    <div class="social-menu">
-      <a href="https://www.instagram.com/designbyriqueza?igsh=ZzkzMHE5ODFraTc4" target="_blank" rel="noreferrer" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"></rect><circle cx="12" cy="12" r="3.2"></circle><circle cx="17.2" cy="6.8" r="0.8"></circle></svg>
+    <div class="social-card">
+      <a href="https://www.instagram.com/designbyriqueza?igsh=ZzkzMHE5ODFraTc4" target="_blank" rel="noreferrer" aria-label="Instagram" data-social="instagram">
+        <i class="fa-brands fa-instagram"></i>
+        <span>Instagram</span>
       </a>
-      <a href="https://api.whatsapp.com/send?phone=2348163582619" target="_blank" rel="noreferrer" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 19.1l1-3.7a7.2 7.2 0 1 1 2.7 2.6l-3.7 1.1Z"></path><path d="M9.5 8.8c.2-.5.4-.5.7-.5h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4 0 .6l-.4.5c-.1.1-.2.3 0 .5.4.8 1.2 1.5 2.1 1.9.2.1.4.1.5-.1l.6-.7c.1-.2.4-.2.6-.1l1.6.8c.3.1.4.3.4.5 0 .6-.4 1.5-1.1 1.7-.8.3-2.5.1-4.4-1.1-1.7-1.1-3.2-3-3.5-4.3-.2-.9.1-1.5.2-1.7Z"></path></svg>
+      <a href="https://api.whatsapp.com/send?phone=2348163582619" target="_blank" rel="noreferrer" aria-label="WhatsApp" data-social="whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>WhatsApp</span>
       </a>
-      <a href="tel:08163582619" aria-label="Call">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.3 4.5 9 4c.5-.1 1 .1 1.2.6l1 2.5c.2.4.1.8-.2 1.1L9.8 9.5a10.2 10.2 0 0 0 4.7 4.7l1.3-1.2c.3-.3.7-.4 1.1-.2l2.5 1c.5.2.7.7.6 1.2l-.5 1.7c-.2.8-.9 1.3-1.7 1.3A12.8 12.8 0 0 1 5 5.7c0-.8.5-1.5 1.3-1.7Z"></path></svg>
+      <a href="tel:08163582619" aria-label="Call" data-social="phone">
+        <i class="fa-solid fa-phone"></i>
+        <span>Call Us</span>
       </a>
     </div>
-    <button class="social-toggle" type="button" aria-label="Open social links" aria-expanded="false">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5h10M7 12h7M7 15.5h5"></path><path d="M12 21a9 9 0 1 0-7.2-3.6L4 21l3.6-.8A8.9 8.9 0 0 0 12 21Z"></path></svg>
+    <button class="social-toggle" type="button" aria-label="Open contact options" aria-expanded="false">
+      <span class="toggle-label">Contact us</span>
+      <span class="toggle-arrow"><i class="fa-solid fa-chevron-up"></i></span>
     </button>
   </div>
   <div class="success-modal" data-success-modal role="dialog" aria-modal="true" aria-labelledby="success-title">
@@ -556,16 +554,7 @@ function setupRateSelector(type) {
         expected.name = "fi-text-expectedPayment";
         form.appendChild(expected);
       }
-      let paymentOptionField = form.querySelector('input[name="fi-text-paymentOption"]');
-      if (type === "academy" && !paymentOptionField) {
-        paymentOptionField = document.createElement("input");
-        paymentOptionField.type = "hidden";
-        paymentOptionField.name = "fi-text-paymentOption";
-        form.appendChild(paymentOptionField);
-      }
-      if (type === "academy" && paymentOptionField) {
-        paymentOptionField.value = "Full one-time payment (upon registration)";
-      }
+
       expected.value = option
         ? `${selected.name} - ${option[0]} - base ${option[1]}${
             type === "academy" ? `; registration fee ${formatNaira(ACADEMY_REGISTRATION_FEE)}` : ""
@@ -626,66 +615,100 @@ document.querySelectorAll("input[type='file']").forEach((input) => {
   });
 });
 
-document.querySelectorAll("form[data-forminit]").forEach((form) => {
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const type = form.dataset.forminit;
-    const endpoint = FORM_ENDPOINTS[type];
-    const status = form.querySelector(".form-status");
-    const button = form.querySelector("button[type='submit']");
-    const fileInput = form.querySelector("input[type='file']");
+// ── Scroll-reveal animations ──
+function initReveal() {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
 
-    if (!endpoint) {
-      status.textContent = "Add the Formspree endpoint for this form in script.js before it can send.";
-      return;
-    }
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+}
+
+// ── Hidden iframe for form submission (no page redirect) ──
+let formIframe = null;
+
+function ensureFormIframe() {
+  if (!formIframe) {
+    formIframe = document.createElement("iframe");
+    formIframe.name = "formsubmit-frame";
+    formIframe.style.cssText = "position:absolute;width:0;height:0;border:0;opacity:0;pointer-events:none";
+    document.body.appendChild(formIframe);
+
+    formIframe.addEventListener("load", () => {
+      try {
+        // FormSubmit may redirect the iframe — check if it loaded successfully
+        const type = formIframe.dataset.activeForm;
+        if (type) {
+          const message =
+            type === "interior"
+              ? "Your inquiry has been received. The Riq'ueza team will contact you shortly."
+              : "We have received your payment confirmation. Verification will be completed shortly.";
+          showSuccess(message);
+          // Reset the active form tracking
+          delete formIframe.dataset.activeForm;
+
+          // Reset the form that was submitted
+          const form = document.querySelector(`form[data-forminit="${type}"]`);
+          if (form) {
+            form.reset();
+            // Re-trigger price selectors if needed
+            document.querySelectorAll("[data-price-output]").forEach((el) => {
+              const outputType = el.dataset.priceOutput;
+              if (outputType) setupRateSelector(outputType);
+            });
+          }
+        }
+      } catch (e) {
+        // Cross-origin restrictions may prevent reading iframe content — that's okay
+      }
+    });
+  }
+  return formIframe;
+}
+
+// Form submission — validates client-side, then submits into hidden iframe (no redirect)
+document.querySelectorAll("form[data-forminit]").forEach((form) => {
+  form.addEventListener("submit", (event) => {
+    const status = form.querySelector(".form-status");
+    const fileInput = form.querySelector("input[type='file']");
+    const button = form.querySelector("button[type='submit']");
 
     if (fileInput) {
       const fileError = validateReceiptFile(fileInput);
       if (fileError) {
+        event.preventDefault();
         status.textContent = fileError;
         return;
       }
     }
 
+    // Remove _next if present — we handle success via iframe
+    const nextField = form.querySelector('input[name="_next"]');
+    if (nextField) nextField.remove();
+
+    // Set form to submit into hidden iframe
+    const iframe = ensureFormIframe();
+    form.target = iframe.name;
+    iframe.dataset.activeForm = form.dataset.forminit;
+
+    // Show sending state
     status.textContent = "Sending...";
-    button.disabled = true;
+    if (button) button.disabled = true;
 
-    try {
-      const data = new FormData(form);
-      const response = await fetch(endpoint, {
-        method: "POST",
-        body: data,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        let message = "Submission failed. Please try again.";
-        try {
-          const result = await response.json();
-          message = result?.errors?.map((error) => error.message).join(" ") || result?.error || message;
-        } catch {
-          // Keep the generic message if Formspree returns a non-JSON error page.
-        }
-        throw new Error(message);
-      }
-
-      status.textContent =
-        type === "interior"
-          ? "Your inquiry has been received. The Riq'ueza team will contact you shortly."
-          : "We have received your payment confirmation. Verification will be completed shortly.";
-      showSuccess(status.textContent);
-      form.reset();
-      document.querySelectorAll("[data-price-output]").forEach((el) => {
-        const outputType = el.dataset.priceOutput;
-        if (outputType) setupRateSelector(outputType);
-      });
-    } catch (error) {
-      status.textContent = error.message || "Something went wrong. Please try again.";
-    } finally {
-      button.disabled = false;
-    }
+    // Re-enable after a timeout in case iframe load doesn't fire
+    setTimeout(() => {
+      if (button) button.disabled = false;
+    }, 8000);
   });
 });
+
+// Initialize reveal animations after DOM is ready
+initReveal();

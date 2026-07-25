@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Riqueza Design | Interior Design, Design Education &amp; Conversations</title>
-    <meta name="description" content="Riqueza Design offers bespoke interior design services across Nigeria, design education through Xcel Academy, and industry conversations via the Pod by Riqueza podcast." />
-    <link rel="canonical" href="https://riquezadesign.com/" />
-    <meta property="og:title" content="Riqueza Design" />
-    <meta property="og:description" content="Interior design, design education, and podcast conversations from Riqueza Design, based in Nigeria." />
-    <meta property="og:image" content="https://riquezadesign.com/public/riqueza-logo.jpg" />
-    <meta property="og:url" content="https://riquezadesign.com/" />
+    <title>The Pod by Riqueza | Interior Design Podcast, Abuja</title>
+    <meta name="description" content="The Pod by Riqueza — a podcast on interior design, creativity, and the business of design, recorded in Abuja, Nigeria. Conversations that shape the industry." />
+    <link rel="canonical" href="https://riquezadesign.com/podcast.html" />
+    <meta property="og:title" content="The Pod by Riqueza — Design Conversations" />
+    <meta property="og:description" content="Conversations on design, creativity, and the business of interior design. Recorded in Abuja, Nigeria." />
+    <meta property="og:image" content="https://riquezadesign.com/public/podcast/dsc00283.jpg" />
+    <meta property="og:url" content="https://riquezadesign.com/podcast.html" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="facebook-domain-verification" content="z1byygebrz7fq6m7b38d6w51ee8ee5" />
@@ -60,6 +60,7 @@
     <link rel="icon" type="image/jpeg" href="public/riqueza-logo.jpg" />
     <link rel="apple-touch-icon" href="public/riqueza-logo.jpg" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -76,7 +77,7 @@
       
         </div>
       </section>
-      <section class="section podcast-intro">
+      <section class="section podcast-intro reveal">
         <div class="podcast-facility-media">
           <img src="public/podcast/dsc00268.jpg" alt="Podcast studio interior with camera and microphone" loading="lazy" />
           <div class="podcast-facility-thumb">
@@ -99,7 +100,7 @@
           </div>
         </div>
       </section>
-      <section class="section podcast-section">
+      <section class="section podcast-section reveal">
         <div class="rate-list" data-rate-target="podcast"></div>
         <div class="payment-panel booking-panel">
           <aside class="booking-copy">
@@ -117,7 +118,10 @@
               </dl>
             </div>
           </aside>
-          <form class="lux-form payment-form podcast-form" data-forminit="podcast" enctype="multipart/form-data">
+          <form class="lux-form payment-form podcast-form" data-forminit="podcast" action="https://formsubmit.co/umohubong21@gmail.com" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_subject" value="Podcast Payment Confirmation - Riqueza Design" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_honey" value="" style="display:none" />
             <input type="hidden" name="fi-text-formType" value="Podcast Payment Confirmation" />
             <input type="hidden" name="fi-text-selectedAddons" value="No add-ons selected" />
             <label>Package<select name="fi-text-package" data-rate-select="podcast" required></select></label>
@@ -127,8 +131,7 @@
             <label>Full name<input name="fi-sender-fullName" type="text" required /></label>
             <label>Email<input name="fi-sender-email" type="email" required /></label>
             <label>Phone / WhatsApp<input name="fi-text-phone" type="tel" required /></label>
-            <label>Payment reference<input name="fi-text-paymentReference" type="text" required /></label>
-            <label class="upload-field full"><span>Upload payment receipt</span><input name="fi-file-receipt" type="file" accept=".jpg,.jpeg,.png,.pdf" required /><em>JPG, PNG, or PDF receipt. Max 5MB.</em></label>
+                        <label class="upload-field full"><span>Upload payment receipt</span><input name="fi-file-receipt" type="file" accept=".jpg,.jpeg,.png,.pdf" required /><em>JPG, PNG, or PDF receipt. Max 5MB.</em></label>
             <button class="button button-dark" type="submit">Submit Payment Confirmation</button>
             <p class="form-status" aria-live="polite"></p>
           </form>

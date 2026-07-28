@@ -56,11 +56,10 @@
     <meta name="theme-color" content="#f5f3f0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/jpeg" href="public/riqueza-logo.jpg" />
     <link rel="apple-touch-icon" href="public/riqueza-logo.jpg" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -70,7 +69,7 @@
     </header>
     <main>
       <section class="page-hero podcast-hero-stage">
-        <img src="public/podcast/dsc00283.jpg" alt="Podcast studio setup" decoding="async" />
+        <img src="public/podcast/dsc00283.jpg" alt="Podcast studio setup" fetchpriority="high" decoding="async" />
         <div>
           <p class="eyebrow">The Pod by Riqueza</p>
           <h1  style="font-family: 'italic'">OUR FRAME, YOUR FAME</h1>
@@ -118,27 +117,27 @@
               </dl>
             </div>
           </aside>
-          <form class="lux-form payment-form podcast-form" data-forminit="podcast" action="https://formsubmit.co/umohubong21@gmail.com" method="POST" enctype="multipart/form-data">
+          <form class="lux-form payment-form podcast-form" data-forminit="podcast" action="https://formsubmit.co/designbyriqueza@gmail.com" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_subject" value="Podcast Payment Confirmation - Riqueza Design" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_honey" value="" style="display:none" />
-            <input type="hidden" name="fi-text-formType" value="Podcast Payment Confirmation" />
-            <input type="hidden" name="fi-text-selectedAddons" value="No add-ons selected" />
-            <label>Package<select name="fi-text-package" data-rate-select="podcast" required></select></label>
-            <label>Payment option<select name="fi-text-paymentOption" data-option-select="podcast" required></select></label>
+            <input type="hidden" name="formType" value="Podcast Payment Confirmation" />
+            <input type="hidden" name="selectedAddons" value="No add-ons selected" />
+            <label>Package<select name="package" data-rate-select="podcast" required></select></label>
+            <label>Payment option<select name="paymentOption" data-option-select="podcast" required></select></label>
             <div class="addon-field full"><span>Optional editing & add-ons</span><div data-addon-target="podcast"></div></div>
             <div class="computed-price"><span>Expected payment</span><strong data-price-output="podcast">Select a package</strong><em data-addon-summary="podcast">No add-ons selected</em></div>
-            <label>Full name<input name="fi-sender-fullName" type="text" required /></label>
-            <label>Email<input name="fi-sender-email" type="email" required /></label>
-            <label>Phone / WhatsApp<input name="fi-text-phone" type="tel" required /></label>
-                        <label class="upload-field full"><span>Upload payment receipt</span><input name="fi-file-receipt" type="file" accept=".jpg,.jpeg,.png,.pdf" required /><em>JPG, PNG, or PDF receipt. Max 5MB.</em></label>
+            <label>Full name<input name="fullName" type="text" required /></label>
+            <label>Email<input name="email" type="email" required /></label>
+            <label>Phone / WhatsApp<input name="phone" type="tel" required /></label>
+                        <label class="upload-field full"><span>Upload payment receipt</span><input name="receipt" type="file" accept=".jpg,.jpeg,.png,.pdf" required /><em>JPG, PNG, or PDF receipt. Max 5MB.</em></label>
             <button class="button button-dark" type="submit">Submit Payment Confirmation</button>
             <p class="form-status" aria-live="polite"></p>
           </form>
         </div>
       </section>
     </main>
-    <footer class="site-footer"><div class="footer-brand"><img src="public/riqueza-logo.jpg" alt="Riq'ueza logo" /><p>Riq'ueza Design by Heart</p><span>Luxury interiors, design education, and refined creative production in Abuja. ZONE 1, DBM PLAZA, Wuse.</span></div><nav><a href="index.html">Home</a><a href="portfolio.html">Design by Riqueza</a><a href="academy.html">Xcel by Riqueza</a><a href="podcast.html">The Pod by Riqueza</a></nav><div class="footer-contact"><a href="mailto:designbyriqueza@gmail.com">designbyriqueza@gmail.com</a><a href="https://api.whatsapp.com/send?phone=2348163582619">0816 358 2619</a></div></footer>
+    <footer class="site-footer"><div class="footer-brand"><img src="public/riqueza-logo.jpg" alt="Riq'ueza logo" /><p>Riq'ueza Design by Heart</p><span>Luxury interiors, design education, and refined creative production in Abuja. ZONE 1, DBM PLAZA, Wuse.</span></div><nav><a href="index.html">Home</a><a href="portfolio.html">Design by Riqueza</a><a href="academy.html">Xcel by Riqueza</a><a href="podcast.html">The Pod by Riqueza</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><div class="footer-contact"><a href="mailto:designbyriqueza@gmail.com">designbyriqueza@gmail.com</a><a href="https://api.whatsapp.com/send?phone=2348163582619">0816 358 2619</a></div></footer>
     <script src="script.js"></script>
   </body>
 </html>

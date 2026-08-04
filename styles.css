@@ -686,6 +686,7 @@ p {
 }
 
 .lux-form {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
@@ -1350,6 +1351,17 @@ p {
   margin: 0;
   color: var(--dark);
   font-size: 0.92rem;
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .podcast-section {

@@ -632,6 +632,59 @@ function initReveal() {
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 }
 
+// ── Spam protection ──
+const SPAM_KEYWORDS = [
+  "crypto", "bitcoin", "forex", "trading", "investment opportunity",
+  "make money fast", "earn money", "passive income", "work from home",
+  "click here", "act now", "limited time", "congratulations you won",
+  "free money", "wire transfer", "nigerian prince", "dear sir",
+  "dear friend", "business proposal", "confidential business",
+  "urgent assistance", "million dollars", "inheritance",
+  "viagra", "cialis", "pharmacy", "medication",
+  "seo", "backlink", "guest post", "sponsored post",
+  "web design", "web development", "digital marketing",
+  "cheap followers", "buy followers", "instagram followers",
+  "whatsapp group", "telegra", "bit.ly", "tinyurl",
+];
+
+const SPAM_URL_REGEX = /https?:\/\/[^\s]+|(?:www\.)[^\s]+|bit\.ly|tinyurl|t\.co|cutt\.ly|shorturl/i;
+
+function containsSpamContent(text) {
+  if (!text) return false;
+  const lower = text.toLowerCase();
+  if (SPAM_URL_REGEX.test(text)) return true;
+  return SPAM_KEYWORDS.some((keyword) => lower.includes(keyword));
+}
+
+const RATE_LIMIT_KEY = "rq_form_submissions";
+const RATE_LIMIT_MAX = 7;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
+
+function getSubmissionTimestamps() {
+  try {
+    const raw = localStorage.getItem(RATE_LIMIT_KEY);
+    if (!raw) return [];
+    const timestamps = JSON.parse(raw);
+    const now = Date.now();
+    return timestamps.filter((ts) => now - ts < RATE_LIMIT_WINDOW_MS);
+  } catch {
+    return [];
+  }
+}
+
+function checkRateLimit() {
+  const timestamps = getSubmissionTimestamps();
+  return timestamps.length < RATE_LIMIT_MAX;
+}
+
+function recordSubmission() {
+  const timestamps = getSubmissionTimestamps();
+  timestamps.push(Date.now());
+  try {
+    localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(timestamps));
+  } catch {}
+}
+
 // ── Hidden iframe for form submission (no page redirect) ──
 let formIframe = null;
 
@@ -681,6 +734,32 @@ document.querySelectorAll("form[data-forminit]").forEach((form) => {
     const fileInput = form.querySelector("input[type='file']");
     const button = form.querySelector("button[type='submit']");
 
+    // Honeypot check
+    const honeypot = form.querySelector(".hp-field input");
+    if (honeypot && honeypot.value) {
+      event.preventDefault();
+      status.textContent = "Something went wrong. Please try again.";
+      return;
+    }
+
+    // Rate limit check
+    if (!checkRateLimit()) {
+      event.preventDefault();
+      status.textContent = "Too many submissions. Please try again later.";
+      return;
+    }
+
+    // Content spam filter — check name, email, message fields
+    const textFields = form.querySelectorAll("input[type='text'], input[type='email'], textarea");
+    for (const field of textFields) {
+      if (field.closest(".hp-field")) continue;
+      if (containsSpamContent(field.value)) {
+        event.preventDefault();
+        status.textContent = "Your submission could not be processed. Please check your input.";
+        return;
+      }
+    }
+
     if (fileInput) {
       const fileError = validateReceiptFile(fileInput);
       if (fileError) {
@@ -689,6 +768,9 @@ document.querySelectorAll("form[data-forminit]").forEach((form) => {
         return;
       }
     }
+
+    // Record this submission for rate limiting
+    recordSubmission();
 
     // Remove _next if present — we handle success via iframe
     const nextField = form.querySelector('input[name="_next"]');
